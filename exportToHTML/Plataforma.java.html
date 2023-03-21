@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Plataforma.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Plataforma.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Collections</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Comparator</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Plataforma {</span>
+    <span class="s1">String nome</span><span class="s0">;</span>
+    <span class="s1">ArrayList&lt;Jogo&gt; jogos</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">Plataforma(String nome) {</span>
+        <span class="s1">nome = nome</span><span class="s0">;</span>
+        <span class="s1">jogos = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getNome() {</span>
+        <span class="s0">return </span><span class="s1">nome</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">ArrayList&lt;Jogo&gt; getJogos() {</span>
+        <span class="s0">return </span><span class="s1">jogos</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">adicionarJogo(Jogo jogo) {</span>
+        <span class="s1">jogos.add(jogo)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">mostrarInformacoes() {</span>
+        <span class="s1">System.out.println(</span><span class="s2">&quot;Plataforma: &quot; </span><span class="s1">+ nome)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s2">&quot;Jogos:&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Jogo jogo : jogos) {</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;- &quot; </span><span class="s1">+ jogo.getNome() + </span><span class="s2">&quot;, Preço: R$&quot; </span><span class="s1">+ jogo.getPreco() + </span><span class="s2">&quot;, Tem DLC: &quot; </span><span class="s1">+ jogo.temDlc())</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">mostrarJogoMaisCaroMaisBarato() {</span>
+        <span class="s1">Jogo jogoMaisCaro = Collections.max(jogos</span><span class="s0">, </span><span class="s1">Comparator.comparing(Jogo::getPreco))</span><span class="s0">;</span>
+        <span class="s1">Jogo jogoMaisBarato = Collections.min(jogos</span><span class="s0">, </span><span class="s1">Comparator.comparing(Jogo::getPreco))</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s2">&quot;Jogo mais caro: &quot; </span><span class="s1">+ jogoMaisCaro.getNome() + </span><span class="s2">&quot;, Preço: R$&quot; </span><span class="s1">+ jogoMaisCaro.getPreco())</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s2">&quot;Jogo mais barato: &quot; </span><span class="s1">+ jogoMaisBarato.getNome() + </span><span class="s2">&quot;, Preço: R$&quot; </span><span class="s1">+ jogoMaisBarato.getPreco())</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public int </span><span class="s1">contarJogosComDlc() {</span>
+        <span class="s0">int </span><span class="s1">count = </span><span class="s3">0</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Jogo jogo : jogos) {</span>
+            <span class="s0">if </span><span class="s1">(jogo.temDlc()) {</span>
+                <span class="s1">count++</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">count</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
